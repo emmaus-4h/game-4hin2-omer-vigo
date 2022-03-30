@@ -6,7 +6,7 @@ Gemaakt door:
 - *Omer Sevindi*
 
 ### Beschrijving
-*korte beschrijving van het spel, wat je kunt doen in het spel, wat het doel is*
+*De beste game: korte beschrijving van het spel, wat je kunt doen in het spel, wat het doel is*
 
 ## Mijn planning
 Werk de planning af van boven naar beneden<br>
