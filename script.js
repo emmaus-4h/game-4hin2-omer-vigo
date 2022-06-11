@@ -10,14 +10,21 @@ voeg er je eigen code aan toe.
 const SPELEN = 1;
 const GAMEOVER = 2;
 var spelStatus = SPELEN;
-const KEY_LEFT = 37;
-const KEY_RIGHT = 39;
-const KEY_DOWN = 40;
-const KEY_UP = 38;
+
 var spelerX = 600; // x-positie van speler
 var spelerY = 600; // y-positie van speler
-var vijandX = 600; // x-positie van speler
-var vijandY = 600; // y-positie van speler
+
+var vijandX = 500;
+var vijandY = 0;
+
+const KEY_UP = 38;
+
+var HP= 100;
+
+var PUNT= 0;
+
+var kogelX= spelerX;
+var kogelY= spelerY;
 /* ********************************************* */
 /* functies die je gebruikt in je game */
 /* ********************************************* */
@@ -26,20 +33,30 @@ var vijandY = 600; // y-positie van speler
 */
 var beweegAlles = function () {
   // speler
-  if (keyIsDown(KEY_LEFT)) {
-    spelerX = spelerX - 5;
-  }
-  if (keyIsDown(KEY_RIGHT)) {
-    spelerX = spelerX + 5;
-  }
-  if (keyIsDown(KEY_DOWN)) {
-    spelerY = spelerY + 5;
-  }
-  if (keyIsDown(KEY_UP)) {
-    spelerY = spelerY - 5;
-  }
+ if (keyIsDown(KEY_UP)) { spelerY -= 5; }
+  if (keyIsDown(37)) { spelerX -= 5; }
+  if (keyIsDown(39)) { spelerX += 5; }
+  if (keyIsDown(40)) { spelerY += 5; }
+
+  if (spelerY < 50) {
+    spelerY = 50;}
+    if (spelerX < 50) {
+      spelerX = 50;}
+      if (spelerX > 1280) {
+        spelerX = 1280;}
+        if (spelerY > 720) {
+          spelerY = 720;}
+
+        ;
   // vijand
+  vijandY = vijandY + 5
+ if (vijandY >730) {
+   vijandY = 0;}
   // kogel
+  if (keyIsDown(32)) 
+  {kogelX = spelerX}
+if(keyIsDown(32))
+  {kogelY = spelerY}
 };
 /**
 * Checkt botsingen
@@ -48,32 +65,66 @@ var beweegAlles = function () {
 */
 var verwerkBotsing = function () {
   // botsing speler tegen vijand
-  if (spelerX - vijandX < 150 &&
-    vijandX - spelerX < 150 &&
-    spelerY - vijandY < 150 &&
-    vijandY - spelerY < 150) {
-    console.log("botsing");
+   for (var i = 0; i < 8 ; i++) {
+    vijandX = i *150
+    if (vijandX - spelerX < 50 && vijandX - spelerX> -50 && vijandY - spelerY <50 && vijandY - spelerY> -50){
+      console.log("botsing")
+      if (HP>0) HP -=  1;
+    }
   }
   // botsing kogel tegen vijand
+    
   // update punten en health
+    PUNT = PUNT + 0.02;
 };
 /**
 * Tekent spelscherm
 */
 var tekenAlles = function () {
   // achtergrond
-  fill("white");
+  fill("black");
   rect(0, 0, 1280, 720)
   // vijand
-  fill("red");
-  ellipse(vijandX - 25, vijandY - 25, 150, 150);
-  ellipse(vijandX - 25, vijandY - 25, 100, 100);
+ for (var i = 0; i < 8 ; i++) {
+      vijandX = i *150
+    fill("orange")
+    ellipse(vijandX - 25, vijandY - 25, 50, 50);
+    fill("black")
+    rect(vijandX - 40, vijandY - 40, 10, 10);
+    fill("black")
+    rect(vijandX - 20, vijandY - 40, 10, 10);
+  
+    }
   // kogel
+   fill("red")
+    ellipse(kogelX  - 25, kogelY - 25, 20, 20)
   // speler
-  fill("green");
-  ellipse(spelerX - 25, spelerY - 25, 150, 150);
-  ellipse(spelerX - 25, spelerY - 25, 100, 100);
-  // punten en health
+fill("blue");
+    ellipse(spelerX - 25, spelerY - 25, 50, 50);
+    fill("yellow")
+    rect(spelerX - 40, spelerY - 40, 10, 10);
+    fill("yellow")
+    rect(spelerX - 20, spelerY - 40, 10, 10);
+    fill("yellow")
+    ellipse(spelerX - 25, spelerY - 17, 30, 15)
+  // punten
+fill("green")
+    rect(1100, 80, 150, 50)
+    fill("black")
+    textSize(50);
+    text( floor(PUNT), 1150, 120);
+
+  // levens
+  
+    fill("red")
+    rect(1100, 30 , 150, 50)
+
+    fill("black")
+    textSize(50);
+    text( HP, 1150, 70)
+  
+
+  
 };
 /**
 * return true als het gameover is
@@ -95,7 +146,7 @@ function setup() {
   // Maak een canvas (rechthoek) waarin je je speelveld kunt tekenen
   createCanvas(1280, 720);
   // Kleur de achtergrond blauw, zodat je het kunt zien
-  background('blue');
+  background('yellow');
 }
 /**
 * draw
@@ -103,15 +154,20 @@ function setup() {
 * uitgevoerd door de p5 library, nadat de setup functie klaar is
 */
 function draw() {
-  if (spelStatus === SPELEN) {
-    beweegAlles();
-    verwerkBotsing();
-    tekenAlles();
-    if (checkGameOver()) {
-      spelStatus = GAMEOVER;
+    if (spelStatus === SPELEN) {
+      beweegAlles();
+      verwerkBotsing();
+      tekenAlles();
+      if (HP<=0) {
+        spelStatus = GAMEOVER;
+      }
     }
-  }
-  if (spelStatus === GAMEOVER) {
-    // teken game-over scherm
-  }
+    if (spelStatus === GAMEOVER) {
+      // teken game-over scherm
+     textSize (160)
+     background("pink")
+     text("amateur",550,700)
+    
+
+    }
 }
