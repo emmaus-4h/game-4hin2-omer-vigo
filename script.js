@@ -57,6 +57,8 @@ var beweegAlles = function () {
   {kogelX = spelerX}
 if(keyIsDown(32))
   {kogelY = spelerY}
+
+  kogelY = kogelY - 5;
 };
 /**
 * Checkt botsingen
@@ -73,7 +75,12 @@ var verwerkBotsing = function () {
     }
   }
   // botsing kogel tegen vijand
-    
+    for (var i = 0; i < 8 ; i++) {
+      vijandX = i *150
+    if (kogelX - vijandX < 50 && kogelX - vijandX> -50 && kogelY - vijandY <50 && kogelY - vijandY> -50){
+      console.log("botsing2")
+    }
+    }
   // update punten en health
     PUNT = PUNT + 0.02;
 };
@@ -164,9 +171,9 @@ function draw() {
     }
     if (spelStatus === GAMEOVER) {
       // teken game-over scherm
-     textSize (160)
-     background("pink")
-     text("amateur",550,700)
+     textSize (260)
+     background("lightblue")
+     text("amateur",190,410)
     
 
     }

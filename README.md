@@ -15,20 +15,20 @@ Geef aan met [x] welke onderdelen af zijn
 ### Basisstappen
 Basis: uitleg, spelen, afgaan en punten
 - [x] 1. maak index.html, style.css en script.js met canvas
-- [ ] 2. teken speler
+- [x] 2. teken speler
         - Zet je code in de functie tekenAlles()
-- [ ] 3. beweeg speler
+- [x] 3. beweeg speler
         - Zet je code in de functie beweegAlles()
         - Kies de afmeting van speler
         - Gebruik variabalen spelerX en spelerY als middelpunt van de speler
-- [ ] 4. *(pas de volgende stappen in de planning zelf aan)*
-- [ ] x. teken je tegenspeler (vijanden of dingen die je moet pakken of doelen of ...)
-- [ ] x. teken een bal, kogel (als die in je spel zit)
-- [ ] x. beweeg de tegenspeler of je bal
-- [ ] x. zet punten op het scherm 
-- [ ] x. zorg dat je punten kunt scoren
-- [ ] x. zorg dat je af kunt
-- [ ] x. maak game-over-scherm
+- [x] 4. *(pas de volgende stappen in de planning zelf aan)*
+- [x] x. teken je tegenspeler (vijanden of dingen die je moet pakken of doelen of ...)
+- [x] x. teken een bal, kogel (als die in je spel zit)
+- [x] x. beweeg de tegenspeler of je bal
+- [x] x. zet punten op het scherm 
+- [x] x. zorg dat je punten kunt scoren
+- [x] x. zorg dat je af kunt
+- [x] x. maak game-over-scherm
 - [ ] x. maak uitlegscherm
 
 ### Uitbreidingen 1
@@ -48,10 +48,10 @@ Kies de uitbreidingen die je leuk vindt en maak je game nog mooier
 - [ ] Gebruik plaatjes voor de vijanden
 - [ ] Animeer speler
 - [ ] Laat badges vallen die extra's aan speler geven
-- [ ] Maak spel steeds moeilijker door toenemend aantal vijanden met tekenVijand
+- [x] Maak spel steeds moeilijker door toenemend aantal vijanden met tekenVijand
 - [ ] Maak andere vijanden bij toenemen tekenVijand
 - [ ] Laat vijanden bewegen in patronen
-- [ ] Maak bediening met touch of bewegen van telefoon mogelijk (zorg dat toetsenbordbediening ook blijft werken)
+- [x] Maak bediening met touch of bewegen van telefoon mogelijk (zorg dat toetsenbordbediening ook blijft werken)
 - [ ] ...
 
 ## Documentatie
